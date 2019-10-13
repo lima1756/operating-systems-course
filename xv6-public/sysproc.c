@@ -66,11 +66,15 @@ sys_sleep(void)
     return -1;
   acquire(&tickslock);
   ticks0 = ticks;
+//   cprintf("%d\n", n);
+//   cprintf("%d\n", ticks0);
   while(ticks - ticks0 < n){
     if(myproc()->killed){
       release(&tickslock);
       return -1;
     }
+    // cprintf("ticks: %d\n", ticks);
+    // cprintf("ticks0: %d\n", ticks0);
     sleep(&ticks, &tickslock);
   }
   release(&tickslock);
