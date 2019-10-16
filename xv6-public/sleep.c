@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     exit();
   }
   int time = atoi(argv[1]);
-  printf(2, "sleeping %d ticks...\n", time);
-  sleep(time);
+  printf(2, "sleeping %d seconds...\n", time);
+  sleep(time*100);
   exit();
 }
