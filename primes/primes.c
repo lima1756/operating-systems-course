@@ -4,31 +4,24 @@
 #include <math.h>
 
 int main(){
-    char curr=0;
     int prime = 0;
-    int primeObtained = 0;
-    int currNum = 0;
-    while(-1 != (curr = getchar())){
-        if(curr != ' '){
-            if(!primeObtained){
-                prime = prime * 10 + (curr - '0');
-            }
-            else{
-                currNum = currNum * 10 + (curr - '0');
-            }
+    char flag = '0';
+    do{
+        char word[4];
+        scanf("%s", word);
+        flag = word[0];
+        if(!flag){
+            break;
         }
-        else {
-            if(!primeObtained){
-                primeObtained = 1;
-                fprintf(stderr, "%d, ", prime);
-            }
-            else {
-                if(currNum % prime != 0){
-                    printf("%d ", currNum);
-                }
-                currNum = 0;
-            }
+        int number = atoi(word);
+        if(!prime){
+            prime = number;
+            fprintf(stderr, "%d, ", prime);
         }
-    };
+        else if(number % prime != 0){
+            printf("%d\n", number);
+        }
+    }while(flag);
+    printf("%c", '\0');
     return 0;
 }
